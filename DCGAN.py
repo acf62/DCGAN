@@ -55,7 +55,7 @@ class Discriminator(nn.Module):
             nn.BatchNorm2d(nfd * 2),
             nn.LeakyReLU(0.2, inplace=True),
 
-            nn.Conv2d(nfd * 2, nfg * 4, 4, 2, 1, bias=False),
+            nn.Conv2d(nfd * 2, nfd * 4, 4, 2, 1, bias=False),
             nn.BatchNorm2d(nfg * 4),
             nn.LeakyReLU(0.2, inplace=True),
 
