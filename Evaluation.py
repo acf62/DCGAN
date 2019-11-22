@@ -20,7 +20,7 @@ image_size = 64
 
 # We can use an image folder dataset the way we have it setup.
 # Create the dataset
-dataset = dsets.CIFAR10(root='../data', train=True, download=True,
+dataset = dsets.CIFAR10(root='./data', train=True, download=True,
                            transform=transforms.Compose([
                                transforms.Resize(image_size),
                                transforms.CenterCrop(image_size),

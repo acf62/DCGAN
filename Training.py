@@ -48,6 +48,13 @@ def initialize_weights(layer):
 G = DCGAN.Generator(ngpu=ngpu).to(device)
 D = DCGAN.Discriminator(ngpu=ngpu).to(device)
 
+# Handle multi-gpu if desired
+if (device.type == 'cuda') and (ngpu > 1):
+    G = nn.DataParallel(G, list(range(ngpu)))
+# Handle multi-gpu if desired
+if (device.type == 'cuda') and (ngpu > 1):
+    D = nn.DataParallel(D, list(range(ngpu)))
+
 G.apply(initialize_weights)
 D.apply(initialize_weights)
 
