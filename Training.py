@@ -4,6 +4,7 @@ import torch.nn.parallel
 import torch.optim as optim
 import torch.utils.data
 import torchvision.utils as vutils
+from torchvision.utils import save_image
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
@@ -101,17 +102,9 @@ def train(data_loader):
 
             optimizerG.step()
 
-            if iters % 500 == 0:
+            if iters % 5 == 0:
                 print(str(iters) + " out of " + str(len(data_loader)))
                 with torch.no_grad():
                     fake = G(fixed_noise).detach().cpu()
-                img_list.append(vutils.make_grid(fake, padding=2, normalize=True))
+                    save_image(vutils.make_grid(fake, padding=2, normalize=True), str(iters) + ".png")
             iters += 1
-            print(iters)
-
-    fig = plt.figure(figsize=(8, 8))
-    plt.axis("off")
-    ims = [[plt.imshow(np.transpose(i, (1, 2, 0)), animated=True)] for i in img_list]
-    ani = animation.ArtistAnimation(fig, ims, interval=1000, repeat_delay=1000, blit=True)
-
-    HTML(ani.to_jshtml())

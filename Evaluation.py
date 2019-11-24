@@ -19,7 +19,7 @@ image_size = 32
 
 # We can use an image folder dataset the way we have it setup.
 # Create the dataset
-dataset = dsets.CIFAR10(root='data', train=True, download=True,
+dataset = dsets.CIFAR10(root=dataroot, train=True, download=True,
                            transform=transforms.Compose([
                                transforms.Resize(image_size),
                                transforms.CenterCrop(image_size),
@@ -30,6 +30,5 @@ dataset = dsets.CIFAR10(root='data', train=True, download=True,
 
 # Create the data_loader
 data_loader = torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=workers)
-
 
 Training.train(data_loader)
