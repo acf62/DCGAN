@@ -2,7 +2,7 @@ import torch.nn as nn
 
 
 # Number of channels in the training images. For color images this is 3
-nc = 1
+nc = 3
 
 # Size of z latent vector (i.e. size of generator input)
 nz = 100

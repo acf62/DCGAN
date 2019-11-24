@@ -10,11 +10,11 @@ import matplotlib.animation as animation
 from IPython.display import HTML
 
 
-import DCGAN
+import DCGAN32 as DCGAN
 
 
 # Number of training epochs
-num_epochs = 5
+num_epochs = 1
 
 # Learning rate for optimizers
 lr = 0.0002
